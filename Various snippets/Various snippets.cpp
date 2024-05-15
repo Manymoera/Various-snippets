@@ -2,27 +2,35 @@
 #include "devtools.h"
 #include "parprog.h"
 #include "huffman.h"
-using namespace std;
+#include "LZ77.h"
+#include <fstream>
+#include <string>
 
 void main()
 {
-    char str[] = "occurrences";
-    char str_1[] = "prepinstaff";
-    int freq1[256] = { 0 };
-
-    char_freq(str_1, freq1);
-
-    std::cout << "\n";
-
-    for (int i = 0; i < 256; i++) {
-        if (freq1[i] != 0) {
-            cout << char(i) << " : " << freq1[i] << endl;
-        }
-    }
-
-    std::cout << "\n";
-    string text = "aboba ytdol yolo qwerty";
-    string dec_text;
+    std::ifstream file("D:\\University Labs\\Various snippets\\compression.txt"); 
+    std::ofstream file_in("D:\\University Labs\\Various snippets\\comp_in.txt");
+    std::string line;
+    getline(file, line);
+    //std::cout << "string: " << line << std::endl;
+    file.close();
+    //std::string text = "aboba ytdol yolo qwerty";
+    /*std::string dec_text;
+    std::string enc_txt;
     std::cout << '\n';
-    buildHuffmanTree(text, dec_text);
+    buildHuffmanTree(line, dec_text, enc_txt);
+    file_in << enc_txt << std::endl;
+    file_in.close();*/
+
+    std::string lines = "AABCBBABC";
+
+    std::vector<int> offset;
+    std::vector<int> str_size;
+    std::vector<std::string> symb(lines.length(), lines);
+
+    std::cout << symb.size() << endl;
+
+    std::cout << lines << endl;
+
+    lz77(lines);
 }
