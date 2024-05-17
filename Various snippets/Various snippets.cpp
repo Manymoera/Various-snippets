@@ -22,15 +22,19 @@ void main()
     file_in << enc_txt << std::endl;
     file_in.close();*/
 
-    std::string lines = "AABCBBABC";
+    std::cout << endl;
 
-    std::vector<int> offset;
-    std::vector<int> str_size;
-    std::vector<std::string> symb(lines.length(), lines);
+    std::string input = "aboba ytdol yolo qwerty";
+    LZ77 lz77(6, 4); // windowSize = 6, lookaheadBufferSize = 4
+    std::cout << "Initial data: " << input << std::endl;
 
-    std::cout << symb.size() << endl;
+    std::vector<LZ77Token> compressedData = lz77.compress(input);
 
-    std::cout << lines << endl;
+    std::cout << "Compressed data:" << std::endl;
+    for (const auto& token : compressedData) {
+        std::cout << "(" << token.offset << ", " << token.length << ", " << token.nextChar << ")" << std::endl;
+    }
 
-    lz77(lines);
+    std::string decompressedData = lz77.decompress(compressedData);
+    std::cout << "Decompressed data: " << decompressedData << std::endl;
 }
