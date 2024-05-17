@@ -8,20 +8,21 @@
 
 void main()
 {
+    /*
     std::ifstream file("D:\\University Labs\\Various snippets\\compression.txt"); 
     std::ofstream file_in("D:\\University Labs\\Various snippets\\comp_in.txt");
     std::string line;
     getline(file, line);
-    //std::cout << "string: " << line << std::endl;
+    std::cout << "string: " << line << std::endl;
     file.close();
-    //std::string text = "aboba ytdol yolo qwerty";
-    /*std::string dec_text;
+    */
+    std::string line = "aboba ytdol yolo qwerty";
+    std::string dec_text;
     std::string enc_txt;
     std::cout << '\n';
-    buildHuffmanTree(line, dec_text, enc_txt);
-    file_in << enc_txt << std::endl;
-    file_in.close();*/
+    buildHuffmanTree(line, dec_text);
 
+    std::cout << endl;
     std::cout << endl;
 
     std::string input = "aboba ytdol yolo qwerty";
